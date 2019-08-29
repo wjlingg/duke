@@ -105,11 +105,7 @@ public class Duke {
             arrList.clear();
             arrList.addAll(temp);
         }else if(command.equals(COMMAND_DELETE)){
-//            for (int i = 0; i < arrList.size(); i++){
-//                if(i == index) {
-                    arrList.remove(index);
-//                }
-//            }
+            arrList.remove(index);
         }else{
             arrList.add(items);
         }
@@ -124,31 +120,6 @@ public class Duke {
             exc.printStackTrace(); // If there was an error, print the info.
         }
     }
-
-//    private static void modifyFile(String filePath, int index, String command) {
-//        ArrayList<String> temp = new ArrayList<>();
-//        String tempStr = "";
-//        for (int i = 0; i < arrList.size(); i++){
-//            if(i == index){
-//                tempStr = arrList.get(i).replace("\u2718", "\u2713");
-//                temp.add(tempStr);
-//            }else{
-//                temp.add(arrList.get(i));
-//            }
-//        }
-//        arrList.clear();
-//        arrList.addAll(temp);
-//        try {
-//            FileWriter fileWriter = new FileWriter(filePath);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            for (String str : arrList) {
-//                bufferedWriter.write(str + "\n");
-//            }
-//            bufferedWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     /**
      * Executes the command as specified by the {@code userInputString}
@@ -236,7 +207,6 @@ public class Duke {
                 //marking targeted item as completed
                 myList.get(index - 1).markAsDone();
                 saveFile(userInputString.trim().substring(0, 4), arrList.size() - myList.size() + index - 1, "");
-//                modifyFile(filePath,arrList.size() - myList.size() + index - 1, userInputString.trim().substring(0, 4));
                 System.out.println(
                         DIVIDER + MESSAGE_MARKED +
                                 "       " + myList.get(index - 1) + "\n" + DIVIDER
@@ -367,9 +337,10 @@ public class Duke {
                 }
             }else{
                 Task removed = myList.get(index - 1);
+                //save before remove if not the input index for savefile() will be wrong
+                //but also can insert as (arrList.size() - myList.size() + index - 2)
                 saveFile(userInputString.trim().substring(0, 6), arrList.size() - myList.size() + index - 1, "");
                 myList.remove(removed);
-//                saveFile(userInputString.trim().substring(0, 6), arrList.size() - myList.size() + index - 1, "");
                 System.out.println(
                         DIVIDER + MESSAGE_DELETE +
                                 "       " + removed + "\n" + MESSAGE_ITEMS1 + myList.size() + MESSAGE_ITEMS2 +
