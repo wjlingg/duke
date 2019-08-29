@@ -7,3 +7,4 @@ T | ✘ | return book
 T | ✘ | clear book
 T | ✓ | buy book
 T | ✓ | research book
+T | ✓ | settle lunch

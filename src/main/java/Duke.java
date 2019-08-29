@@ -321,6 +321,7 @@ public class Duke {
     }
 
     private static void commandDelete(String userInputString) throws DukeException{
+        String msg = "";
         if(userInputString.trim().equals(COMMAND_DELETE)){
             System.out.print(DIVIDER);
             throw new DukeException(ERROR_MESSAGE_EMPTY_INDEX + MESSAGE_FOLLOWUP_EMPTY_INDEX + DIVIDER);
@@ -341,9 +342,14 @@ public class Duke {
                 //but also can insert as (arrList.size() - myList.size() + index - 2)
                 saveFile(userInputString.trim().substring(0, 6), arrList.size() - myList.size() + index - 1, "");
                 myList.remove(removed);
+                if (myList.size() == 1) {
+                    msg = " task in the list.\n";
+                } else {
+                    msg = MESSAGE_ITEMS2;
+                }
                 System.out.println(
                         DIVIDER + MESSAGE_DELETE +
-                                "       " + removed + "\n" + MESSAGE_ITEMS1 + myList.size() + MESSAGE_ITEMS2 +
+                                "       " + removed + "\n" + MESSAGE_ITEMS1 + myList.size() + msg +
                                 DIVIDER
                 );
             }
