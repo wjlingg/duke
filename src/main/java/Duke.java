@@ -14,6 +14,7 @@ public class Duke {
     private static final String MESSAGE_TASKED = "     Here are the tasks in your list:";
     private static final String MESSAGE_MARKED = "     Nice! I've marked this task as done:\n";
     private static final String MESSAGE_ADDED = "     Got it. I've added this task:\n";
+    private static final String MESSAGE_DELETE = "     Noted. I've removed this task:\n";
     private static final String MESSAGE_ITEMS1 = "     Now you have ";
     private static final String MESSAGE_ITEMS2 = " tasks in the list.\n";
     private static final String MESSAGE_BYE = "     Bye. Hope to see you again soon!\n";
@@ -35,6 +36,7 @@ public class Duke {
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_EVENT = "event";
+    private static final String COMMAND_DELETE = "delete";
     private static final String COMMAND_EXIT_PROGRAM = "bye";
     private static final String DIVIDER = "   ____________________________________________________________\n";
 
@@ -88,8 +90,29 @@ public class Duke {
         }
     }
 
-    private static void saveFile(String items){
-        arrList.add(items);
+    private static void saveFile(String command, int index, String items){
+        if(command.equals(COMMAND_DONE)) {
+            ArrayList<String> temp = new ArrayList<>();
+            String tempStr = "";
+            for (int i = 0; i < arrList.size(); i++){
+                if(i == index){
+                    tempStr = arrList.get(i).replace("\u2718", "\u2713");
+                    temp.add(tempStr);
+                }else{
+                    temp.add(arrList.get(i));
+                }
+            }
+            arrList.clear();
+            arrList.addAll(temp);
+        }else if(command.equals(COMMAND_DELETE)){
+//            for (int i = 0; i < arrList.size(); i++){
+//                if(i == index) {
+                    arrList.remove(index);
+//                }
+//            }
+        }else{
+            arrList.add(items);
+        }
         try{
             FileWriter fileWriter = new FileWriter(filePath);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -102,30 +125,30 @@ public class Duke {
         }
     }
 
-    private static void modifyFile(String filePath, int index) {
-        ArrayList<String> temp = new ArrayList<>();
-        String tempStr = "";
-        for (int i = 0; i < arrList.size(); i++){
-            if(i == index){
-                tempStr = arrList.get(i).replace("\u2718", "\u2713");
-                temp.add(tempStr);
-            }else{
-                temp.add(arrList.get(i));
-            }
-        }
-        arrList.clear();
-        arrList.addAll(temp);
-        try {
-            FileWriter fileWriter = new FileWriter(filePath);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (String str : arrList) {
-                bufferedWriter.write(str + "\n");
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private static void modifyFile(String filePath, int index, String command) {
+//        ArrayList<String> temp = new ArrayList<>();
+//        String tempStr = "";
+//        for (int i = 0; i < arrList.size(); i++){
+//            if(i == index){
+//                tempStr = arrList.get(i).replace("\u2718", "\u2713");
+//                temp.add(tempStr);
+//            }else{
+//                temp.add(arrList.get(i));
+//            }
+//        }
+//        arrList.clear();
+//        arrList.addAll(temp);
+//        try {
+//            FileWriter fileWriter = new FileWriter(filePath);
+//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//            for (String str : arrList) {
+//                bufferedWriter.write(str + "\n");
+//            }
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * Executes the command as specified by the {@code userInputString}
@@ -172,8 +195,15 @@ public class Duke {
                     throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
                 }
             } else if (userInputString.contains(COMMAND_EVENT)) {
-                if(userInputString.trim().substring(0, 5).equals(COMMAND_EVENT)) {
+                if (userInputString.trim().substring(0, 5).equals(COMMAND_EVENT)) {
                     commandEvent(userInputString);
+                } else {
+                    System.out.print(DIVIDER);
+                    throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
+                }
+            }else if (userInputString.contains(COMMAND_DELETE)) {
+                if(userInputString.trim().substring(0, 6).equals(COMMAND_DELETE)) {
+                    commandDelete(userInputString);
                 }else{
                     System.out.print(DIVIDER);
                     throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
@@ -205,7 +235,8 @@ public class Duke {
             }else{
                 //marking targeted item as completed
                 myList.get(index - 1).markAsDone();
-                modifyFile(filePath,arrList.size() - myList.size() + index - 1);
+                saveFile(userInputString.trim().substring(0, 4), arrList.size() - myList.size() + index - 1, "");
+//                modifyFile(filePath,arrList.size() - myList.size() + index - 1, userInputString.trim().substring(0, 4));
                 System.out.println(
                         DIVIDER + MESSAGE_MARKED +
                                 "       " + myList.get(index - 1) + "\n" + DIVIDER
@@ -236,7 +267,7 @@ public class Duke {
                             "       " + myList.get(index - 1) + "\n" + MESSAGE_ITEMS1 + index + msg +
                             DIVIDER
             );
-            saveFile(myList.get(index - 1).toSaveString());
+            saveFile(userInputString.trim().substring(0, 4), index, myList.get(index - 1).toSaveString());
         }else{
             System.out.print(DIVIDER);
             throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
@@ -269,7 +300,7 @@ public class Duke {
                                     "       " + myList.get(index - 1) + "\n" + MESSAGE_ITEMS1 + index + msg +
                                     DIVIDER
                     );
-                    saveFile(myList.get(index - 1).toSaveString());
+                    saveFile(userInputString.trim().substring(0, 8), index, myList.get(index - 1).toSaveString());
                 }
             }else{
                 System.out.print(DIVIDER);
@@ -307,11 +338,43 @@ public class Duke {
                                     "       " + myList.get(index - 1) + "\n" + MESSAGE_ITEMS1 + index + msg +
                                     DIVIDER
                     );
-                    saveFile(myList.get(index - 1).toSaveString());
+                    saveFile(userInputString.trim().substring(0, 5), index, myList.get(index - 1).toSaveString());
                 }
             }else{
                 System.out.print(DIVIDER);
                 throw new DukeException(ERROR_MESSAGE_EVENT + DIVIDER);
+            }
+        }else{
+            System.out.print(DIVIDER);
+            throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
+        }
+    }
+
+    private static void commandDelete(String userInputString) throws DukeException{
+        if(userInputString.trim().equals(COMMAND_DELETE)){
+            System.out.print(DIVIDER);
+            throw new DukeException(ERROR_MESSAGE_EMPTY_INDEX + MESSAGE_FOLLOWUP_EMPTY_INDEX + DIVIDER);
+        }else if(userInputString.trim().charAt(6) == ' '){
+            String description = userInputString.trim().split("\\s",2)[1];
+            //converting string to integer
+            int index = Integer.parseInt(description);
+            if(index > myList.size()){
+                System.out.print(DIVIDER);
+                if(myList.size() == 0){
+                    throw new DukeException(ERROR_MESSAGE_EMPTY_LIST + DIVIDER);
+                }else {
+                    throw new DukeException(ERROR_MESSAGE_INVALID_INDEX + MESSAGE_FOLLOWUP_INVALID_INDEX + myList.size() + "\n" + DIVIDER);
+                }
+            }else{
+                Task removed = myList.get(index - 1);
+                saveFile(userInputString.trim().substring(0, 6), arrList.size() - myList.size() + index - 1, "");
+                myList.remove(removed);
+//                saveFile(userInputString.trim().substring(0, 6), arrList.size() - myList.size() + index - 1, "");
+                System.out.println(
+                        DIVIDER + MESSAGE_DELETE +
+                                "       " + removed + "\n" + MESSAGE_ITEMS1 + myList.size() + MESSAGE_ITEMS2 +
+                                DIVIDER
+                );
             }
         }else{
             System.out.print(DIVIDER);
