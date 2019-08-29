@@ -2,3 +2,9 @@ T | ✓ | read book
 D | ✘ | return book | 28th of August 2019, 11.59pm
 E | ✘ | project meeting | Aug 6th 2-4pm
 T | ✓ | join sports club
+T | ✘ | read book
+T | ✘ | return book
+T | ✘ | clear book
+T | ✓ | buy book
+T | ✓ | research book
+T | ✓ | settle lunch
