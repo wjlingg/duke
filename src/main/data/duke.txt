@@ -8,3 +8,10 @@ T | ✘ | clear book
 T | ✓ | buy book
 T | ✓ | research book
 T | ✓ | settle lunch
+T | ✘ | buy lunch for family
+E | ✓ | IFG | 1/9/2019 0900
+D | ✘ | 2113T Level-10 | 2nd of September 2019, 11.59pm
+T | ✘ | buy dinner
+T | ✓ | buy breakfast
+T | ✘ | donate book
+T | ✓ | book sale

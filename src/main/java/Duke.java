@@ -15,6 +15,7 @@ public class Duke {
     private static final String MESSAGE_MARKED = "     Nice! I've marked this task as done:\n";
     private static final String MESSAGE_ADDED = "     Got it. I've added this task:\n";
     private static final String MESSAGE_DELETE = "     Noted. I've removed this task:\n";
+    private static final String MESSAGE_FIND = "     Here are the matching tasks in your list:\n";
     private static final String MESSAGE_ITEMS1 = "     Now you have ";
     private static final String MESSAGE_ITEMS2 = " tasks in the list.\n";
     private static final String MESSAGE_BYE = "     Bye. Hope to see you again soon!\n";
@@ -30,11 +31,13 @@ public class Duke {
     private static final String ERROR_MESSAGE_EMPTY_LIST = "       ☹ OOPS!!! The list is empty.\n       Kindly add a task.\n";
     private static final String ERROR_MESSAGE_EMPTY_INDEX = "       ☹ OOPS!!! The index cannot be empty.\n";
     private static final String ERROR_MESSAGE_INVALID_INDEX = "     Invalid index entered.\n";
+    private static final String ERROR_MESSAGE_NOTFOUND = "     ☹ OOPS!!! I'm sorry, but there is no matching tasks in your list\n";
 
     private static final String COMMAND_GET_LIST = "list";
     private static final String COMMAND_DONE = "done";
     private static final String COMMAND_DEADLINE = "deadline";
     private static final String COMMAND_TODO = "todo";
+    private static final String COMMAND_FIND = "find";
     private static final String COMMAND_EVENT = "event";
     private static final String COMMAND_DELETE = "delete";
     private static final String COMMAND_EXIT_PROGRAM = "bye";
@@ -179,6 +182,13 @@ public class Duke {
                     System.out.print(DIVIDER);
                     throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
                 }
+            } else if (userInputString.contains(COMMAND_FIND)) {
+                if (userInputString.trim().substring(0, 4).equals(COMMAND_FIND)) {
+                    commandFind(userInputString);
+                } else {
+                    System.out.print(DIVIDER);
+                    throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
+                }
             }else{
                 System.out.print(DIVIDER);
                 throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
@@ -320,23 +330,23 @@ public class Duke {
         }
     }
 
-    private static void commandDelete(String userInputString) throws DukeException{
+    private static void commandDelete(String userInputString) throws DukeException {
         String msg = "";
-        if(userInputString.trim().equals(COMMAND_DELETE)){
+        if (userInputString.trim().equals(COMMAND_DELETE)) {
             System.out.print(DIVIDER);
             throw new DukeException(ERROR_MESSAGE_EMPTY_INDEX + MESSAGE_FOLLOWUP_EMPTY_INDEX + DIVIDER);
-        }else if(userInputString.trim().charAt(6) == ' '){
-            String description = userInputString.trim().split("\\s",2)[1];
+        } else if (userInputString.trim().charAt(6) == ' ') {
+            String description = userInputString.trim().split("\\s", 2)[1];
             //converting string to integer
             int index = Integer.parseInt(description);
-            if(index > myList.size()){
+            if (index > myList.size()) {
                 System.out.print(DIVIDER);
-                if(myList.size() == 0){
+                if (myList.size() == 0) {
                     throw new DukeException(ERROR_MESSAGE_EMPTY_LIST + DIVIDER);
-                }else {
+                } else {
                     throw new DukeException(ERROR_MESSAGE_INVALID_INDEX + MESSAGE_FOLLOWUP_INVALID_INDEX + myList.size() + "\n" + DIVIDER);
                 }
-            }else{
+            } else {
                 Task removed = myList.get(index - 1);
                 //save before remove if not the input index for savefile() will be wrong
                 //but also can insert as (arrList.size() - myList.size() + index - 2)
@@ -353,9 +363,35 @@ public class Duke {
                                 DIVIDER
                 );
             }
-        }else{
+        } else {
             System.out.print(DIVIDER);
             throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
+        }
+    }
+    private static void commandFind(String userInputString) throws DukeException {
+        ArrayList<String> temp = new ArrayList<>();
+        if(userInputString.trim().equals(COMMAND_FIND)){
+            System.out.print(DIVIDER);
+            throw new DukeException(ERROR_MESSAGE_GENERAL + MESSAGE_FOLLOWUP_NUll + DIVIDER);
+        }else if(userInputString.trim().charAt(4) == ' ') {
+            String description = userInputString.trim().split("\\s", 2)[1];
+            for(int i = 0; i < arrList.size(); i++){
+                String same = arrList.get(i);
+                if(same.contains(description)){
+                    temp.add(same);
+                }else if(i == arrList.size() - 1){
+                    System.out.print(DIVIDER);
+                    throw new DukeException(ERROR_MESSAGE_NOTFOUND + DIVIDER);
+                }
+            }
+            System.out.println(DIVIDER + MESSAGE_FIND);
+            for (int i = 0; i < temp.size(); i++) {
+                final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
+                System.out.println(
+                        "     " + displayIndex + ". " + temp.get(i)
+                );
+            }
+            System.out.println(DIVIDER);
         }
     }
 
