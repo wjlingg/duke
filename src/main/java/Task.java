@@ -1,5 +1,3 @@
-import java.io.Serializable;
-
 public class Task {
     protected String description; //User input
     protected boolean isDone; //To check if the task is completed
