@@ -15,3 +15,4 @@ T | ✘ | buy dinner
 T | ✓ | buy breakfast
 T | ✘ | donate book
 T | ✓ | book sale
+T | ✘ | red\ad nook
