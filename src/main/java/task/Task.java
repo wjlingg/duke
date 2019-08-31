@@ -1,10 +1,16 @@
-public class Task {
+package task;
+
+public abstract class Task {
     protected String description; //User input
     protected boolean isDone; //To check if the task is completed
 
     public Task(String description) {
         this.description = description; //user input string
         this.isDone = false; //initially marked as not completed
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void markAsDone(){
