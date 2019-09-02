@@ -1,6 +1,7 @@
 package storage;
 
 import task.Deadline;
+import task.Event;
 import task.Task;
 import tasklist.TaskList;
 
@@ -41,6 +42,13 @@ public class Storage {
                         (new Deadline(details, date)).markAsDone();
                     }
                     arrTaskList.add(new Deadline(details, date));
+                }else if(content.charAt(0) == 'E') {
+                    String details = content.substring(8).split(" | ", 2)[0];
+                    String date = content.substring(8).split(" | ", 2)[1];
+                    if (content.charAt(4) == '\u2713') {
+                        (new Event(details, date)).markAsDone();
+                    }
+                    arrTaskList.add(new Event(details, date));
                 }
             }
             fileReader.close();

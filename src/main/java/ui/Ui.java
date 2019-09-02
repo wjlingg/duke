@@ -1,10 +1,8 @@
 package ui;
 
-import static common.Messages.DIVIDER;
-import static common.Messages.ERROR_MESSAGE_LOADING;
-import static common.Messages.filePath;
-
 import java.util.Scanner;
+
+import static common.Messages.*;
 
 public class Ui {
 
@@ -30,12 +28,16 @@ public class Ui {
         );
     }
 
+    public void showGoodbye(){
+        System.out.println(DIVIDER + MESSAGE_BYE + DIVIDER);
+    }
+
     public String readCommand(){
         return SCANNER.nextLine();
     }
 
     public void showLine(){
-        System.out.println(DIVIDER);
+        System.out.print(DIVIDER);
     }
 
     public void showLoadingError(){

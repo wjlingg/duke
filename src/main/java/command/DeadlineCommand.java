@@ -8,31 +8,31 @@ import ui.Ui;
 import static common.Messages.*;
 
 public class DeadlineCommand extends Command {
+
+    public DeadlineCommand(String userInputCommand) {
+        this.userInputCommand = userInputCommand;
+    }
+
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
-        String msg = "";
         if(userInputCommand.trim().equals(COMMAND_DEADLINE)){
-            System.out.print(DIVIDER);
-            throw new DukeException(ERROR_MESSAGE_GENERAL + MESSAGE_FOLLOWUP_NUll + DIVIDER);
+            throw new DukeException(ERROR_MESSAGE_GENERAL + MESSAGE_FOLLOWUP_NUll);
         }else if(userInputCommand.trim().charAt(8) == ' '){
             String description = userInputCommand.trim().split("\\s",2)[1];
             if(description.contains(" /by ")) {
                 String details = description.trim().split(" /by ", 2)[0];
                 String date = description.trim().split(" /by ", 2)[1];
                 if(details == null || date == null) {
-                    System.out.print(DIVIDER);
-                    throw new DukeException(ERROR_MESSAGE_DEADLINE + DIVIDER);
+                    throw new DukeException(ERROR_MESSAGE_DEADLINE);
                 }else{
                     taskList.addDeadlineTask(details, convertDate(date));
                     storage.saveFile(taskList);
                 }
             }else{
-                System.out.print(DIVIDER);
-                throw new DukeException(ERROR_MESSAGE_DEADLINE + DIVIDER);
+                throw new DukeException(ERROR_MESSAGE_DEADLINE);
             }
         }else{
-            System.out.print(DIVIDER);
-            throw new DukeException(ERROR_MESSAGE_RANDOM + DIVIDER);
+            throw new DukeException(ERROR_MESSAGE_RANDOM);
         }
     }
 

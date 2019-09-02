@@ -12,17 +12,17 @@ public class Messages {
     public static final String MESSAGE_DELETE = "     Noted. I've removed this task:\n";
     public static final String MESSAGE_FIND = "     Here are the matching tasks in your list:\n";
     public static final String MESSAGE_ITEMS1 = "     Now you have ";
-    public static final String MESSAGE_ITEMS2 = " tasks in the list.\n";
+    public static final String MESSAGE_ITEMS2 = " tasks in the list.";
     public static final String MESSAGE_BYE = "     Bye. Hope to see you again soon!\n";
     public static final String MESSAGE_FOLLOWUP_INVALID_INDEX = "     Kindly enter command with index not more than ";
     public static final String MESSAGE_FOLLOWUP_EMPTY_INDEX = "       Kindly enter the command again with an index.\n";
-    public static final String MESSAGE_FOLLOWUP_NUll = "       Kindly enter the command again with a description.\n";
+    public static final String MESSAGE_FOLLOWUP_NUll = "       Kindly enter the command again with a description.";
 
     public static final String ERROR_MESSAGE_GENERAL = "       ☹ OOPS!!! The description cannot be empty.\n";
-    public static final String ERROR_MESSAGE_EVENT = "       ☹ OOPS!!! Please specify the event details in this format: \n         event [event description] /at [event time or venue]\n";
+    public static final String ERROR_MESSAGE_EVENT = "       ☹ OOPS!!! Please specify the event details in this format: \n         event [event description] /at [event time or venue]";
     public static final String ERROR_MESSAGE_DEADLINE = "       ☹ OOPS!!! Please specify the deadline in this format: \n         deadline [event description] /by [day/month/year time]\n         Eg: 28/8/2019 2359 (For date and time format)\n";
-    public static final String ERROR_MESSAGE_INVALID_DATE = "       ☹ OOPS!!! Please specify the date and time in this format: \n         [day/month/year time] Eg: 28/8/2019 2359\n";
-    public static final String ERROR_MESSAGE_RANDOM = "     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(\n";
+    public static final String ERROR_MESSAGE_INVALID_DATE = "       ☹ OOPS!!! Please specify the date and time in this format: \n         [day/month/year time] Eg: 28/8/2019 2359";
+    public static final String ERROR_MESSAGE_RANDOM = "     ☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
     public static final String ERROR_MESSAGE_EMPTY_LIST = "       ☹ OOPS!!! The list is empty.\n       Kindly add a task.\n";
     public static final String ERROR_MESSAGE_EMPTY_INDEX = "       ☹ OOPS!!! The index cannot be empty.\n";
     public static final String ERROR_MESSAGE_INVALID_INDEX = "     Invalid index entered.\n";
