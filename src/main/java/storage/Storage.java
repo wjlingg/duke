@@ -3,6 +3,7 @@ package storage;
 import task.Deadline;
 import task.Event;
 import task.Task;
+import task.Todo;
 import tasklist.TaskList;
 
 import java.io.*;
@@ -35,20 +36,29 @@ public class Storage {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String content = "";
             while((content = bufferedReader.readLine())!= null){
-                if(content.charAt(0) == 'D'){
-                    String details = content.substring(8).split(" | ", 2)[0];
-                    String date = content.substring(8).split(" | ", 2)[1];
-                    if(content.charAt(4) == '\u2713'){
-                        (new Deadline(details, date)).markAsDone();
-                    }
-                    arrTaskList.add(new Deadline(details, date));
-                }else if(content.charAt(0) == 'E') {
-                    String details = content.substring(8).split(" | ", 2)[0];
-                    String date = content.substring(8).split(" | ", 2)[1];
+                if(content.charAt(0) == 'T') {
+                    String details = content.substring(8);
                     if (content.charAt(4) == '\u2713') {
-                        (new Event(details, date)).markAsDone();
+                        (new Todo(details)).markAsDone();
                     }
-                    arrTaskList.add(new Event(details, date));
+                    arrTaskList.add(new Todo(details));
+                }else {
+                    //need to escape character in string for "|" by adding "\\" in front of "|"
+                    //if not the split will be on the wrong place
+                    String[] split = content.substring(8).split(" \\| ", 2);
+                    if (content.charAt(0) == 'D') {
+                        Task task = new Deadline(split[0], split[1]);
+                        if (content.charAt(4) == '\u2713') {
+                            task.markAsDone();
+                        }
+                        arrTaskList.add(task);
+                    } else if (content.charAt(0) == 'E') {
+                        Task task = new Event(split[0], split[1]);
+                        if (content.charAt(4) == '\u2713') {
+                            task.markAsDone();
+                        }
+                        arrTaskList.add(task);
+                    }
                 }
             }
             fileReader.close();

@@ -1,7 +1,7 @@
-D | ✘ | 2113T | | | | | | | | | | | | Level-10 | 2nd of September 2019, 11.59pm
-D | ✘ | event | | | | | | | | | | | 2nd of February 2019, 6.00pm
-D | ✘ | event | | | | | | | | | | 2nd of February 2019, 6.00pm
-E | ✘ | eww | | | | | | | | | fw wqfqwe
-D | ✘ | see | | | | | | | book | 2nd of February 2019, 6.23pm
-D | ✘ | return | | | | | | book | 2nd of February 2019, 6.00pm
-E | ✘ | hi | | | | | | | school
+D | ✘ | 2113T level10 | 4th of September 2019, 11.59pm
+E | ✘ | run for elections | changi 1400
+T | ✘ | return book
+D | ✓ | finish reading book | 3rd of September 2019, 3.00pm
+T | ✘ | borrow book
+T | ✓ | read book
+E | ✘ | study for exam | home

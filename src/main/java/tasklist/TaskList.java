@@ -41,7 +41,7 @@ public class TaskList {
         ArrayList<String> arrList = new ArrayList<>();
         for (int i = 0; i < getSize(); i++){
             final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
-            arrList.add("     " + displayIndex + ". " + taskList.get(i).toString());
+            arrList.add("     " + displayIndex + ". " + taskList.get(i));
         }
         return arrList;
     }
@@ -54,7 +54,7 @@ public class TaskList {
         taskList.add(new Deadline(description, by));
         int index = taskList.size();
         if (index == 1) {
-            msg = " task in the list.\n";
+            msg = " task in the list.";
         } else {
             msg = MESSAGE_ITEMS2;
         }

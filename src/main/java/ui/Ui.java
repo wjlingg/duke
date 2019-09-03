@@ -1,7 +1,5 @@
 package ui;
 
-import command.ByeCommand;
-
 import java.util.Scanner;
 
 import static common.Messages.*;
