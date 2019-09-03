@@ -6,7 +6,11 @@ import static common.Messages.*;
 
 public class Ui {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private Scanner scanner;
+
+    public Ui() {
+        this.scanner = new Scanner(System.in);
+    }
 
     /**
      * Display welcome message of the program
@@ -33,7 +37,7 @@ public class Ui {
     }
 
     public String readCommand(){
-        return SCANNER.nextLine();
+        return scanner.nextLine();
     }
 
     public void showLine(){
