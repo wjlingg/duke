@@ -1,7 +1,5 @@
-D | ✘ | 2113T level10 | 4th of September 2019, 11.59pm
-E | ✘ | run for elections | changi 1400
-T | ✘ | return book
-D | ✓ | finish reading book | 3rd of September 2019, 3.00pm
-T | ✘ | borrow book
 T | ✓ | read book
-E | ✘ | study for exam | home
+D | ✘ | return book | 2nd of December 2019, 6.00pm
+E | ✘ | project meeting | Aug 6th 2-4pm
+T | ✓ | join sports club
+T | ✘ | borrow book

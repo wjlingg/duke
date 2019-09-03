@@ -5,10 +5,13 @@ import storage.Storage;
 import tasklist.TaskList;
 import ui.Ui;
 
+import java.text.SimpleDateFormat;
+
 import static common.Messages.*;
 
 public class DeadlineCommand extends Command {
 
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d/M/yyyy HHmm");
     public DeadlineCommand(String userInputCommand) {
         this.userInputCommand = userInputCommand;
     }
@@ -25,14 +28,27 @@ public class DeadlineCommand extends Command {
                 if(details == null || date == null) {
                     throw new DukeException(ERROR_MESSAGE_DEADLINE);
                 }else{
-                    taskList.addDeadlineTask(details, convertDate(date));
-                    storage.saveFile(taskList);
+                    if(isParseDate(date)) {
+                        taskList.addDeadlineTask(details, convertDate(date));
+                        storage.saveFile(taskList);
+                    }else{
+                        throw new DukeException(ERROR_MESSAGE_INVALID_DATE);
+                    }
                 }
             }else{
                 throw new DukeException(ERROR_MESSAGE_DEADLINE);
             }
         }else{
             throw new DukeException(ERROR_MESSAGE_RANDOM);
+        }
+    }
+
+    private static boolean isParseDate(String dateStr) {
+        try {
+            simpleDateFormat.parse(dateStr);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 

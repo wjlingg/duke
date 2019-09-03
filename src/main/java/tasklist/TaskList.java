@@ -65,7 +65,7 @@ public class TaskList {
         taskList.add(new Event(description, at));
         int index = taskList.size();
         if (index == 1) {
-            msg = " task in the list.\n";
+            msg = " task in the list.";
         } else {
             msg = MESSAGE_ITEMS2;
         }
@@ -76,7 +76,7 @@ public class TaskList {
         taskList.add(new Todo(description));
         int index = taskList.size();
         if (index == 1) {
-            msg = " task in the list.\n";
+            msg = " task in the list.";
         } else {
             msg = MESSAGE_ITEMS2;
         }
@@ -89,13 +89,13 @@ public class TaskList {
     }
 
     public void deleteTask(int i){
-        taskList.remove(taskList.get(i));
-        if (taskList.size() == 1) {
-            msg = " task in the list.\n";
+        if (taskList.size() - 1 <= 1) {
+            msg = " task in the list.";
         } else {
             msg = MESSAGE_ITEMS2;
         }
-        System.out.println(MESSAGE_DELETE + "       " + taskList.get(i) + "\n" + MESSAGE_ITEMS1 + taskList.size() + msg);
+        System.out.println(MESSAGE_DELETE + "       " + taskList.get(i) + "\n" + MESSAGE_ITEMS1 + (taskList.size() - 1) + msg);
+        taskList.remove(taskList.get(i));
     }
 
     public ArrayList<Task> getTaskList() {

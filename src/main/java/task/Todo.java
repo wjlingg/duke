@@ -7,7 +7,6 @@ package task;
 public class Todo extends Task {
 
     //Constructor for objects of class Todo
-
     public Todo(String description) {
         super(description);//super class constructor call to the Task(description) constructor
     }

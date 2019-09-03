@@ -14,7 +14,7 @@ public class DeleteCommand extends Command {
         this.userInputCommand = userInputCommand;
     }
 
-    public static boolean isParsable(String input) {
+    private static boolean isParsable(String input) {
         try {
             Integer.parseInt(input);
             return true;

@@ -19,7 +19,7 @@ public class Messages {
 
     public static final String ERROR_MESSAGE_DEADLINE = "       ☹ OOPS!!! Please specify the deadline in this format: \n         deadline [event description] /by [day/month/year time]\n         Eg: 28/8/2019 2359 (For date and time format)";
     public static final String ERROR_MESSAGE_EMPTY_INDEX = "       ☹ OOPS!!! The index cannot be empty.\n";
-    public static final String ERROR_MESSAGE_EMPTY_LIST = "       ☹ OOPS!!! The list is empty.\n       Kindly add a task.\n";
+    public static final String ERROR_MESSAGE_EMPTY_LIST = "       ☹ OOPS!!! The list is empty.\n       Kindly add a task.";
     public static final String ERROR_MESSAGE_EVENT = "       ☹ OOPS!!! Please specify the event details in this format: \n         event [event description] /at [event time or venue]";
     public static final String ERROR_MESSAGE_GENERAL = "       ☹ OOPS!!! The description cannot be empty.\n";
     public static final String ERROR_MESSAGE_INVALID_DATE = "       ☹ OOPS!!! Please specify the date and time in this format: \n         [day/month/year time] Eg: 28/8/2019 2359";

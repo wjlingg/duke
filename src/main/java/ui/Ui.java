@@ -41,7 +41,7 @@ public class Ui {
     }
 
     public void showLoadingError(){
-        System.out.println(DIVIDER + ERROR_MESSAGE_LOADING + filePath + "\n" + DIVIDER);
+        System.out.println(ERROR_MESSAGE_LOADING + filePath);
     }
 
     public void showError(String errorMessage){

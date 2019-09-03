@@ -1,5 +1,6 @@
 package storage;
 
+import exception.DukeException;
 import task.Deadline;
 import task.Event;
 import task.Task;
@@ -30,7 +31,7 @@ public class Storage {
         }
     }
 
-    public ArrayList<Task> load(){
+    public ArrayList<Task> load() throws DukeException {
         try {
             FileReader fileReader = new FileReader(filePath);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -38,10 +39,11 @@ public class Storage {
             while((content = bufferedReader.readLine())!= null){
                 if(content.charAt(0) == 'T') {
                     String details = content.substring(8);
+                    Task task = new Todo(details);
                     if (content.charAt(4) == '\u2713') {
-                        (new Todo(details)).markAsDone();
+                        task.markAsDone();
                     }
-                    arrTaskList.add(new Todo(details));
+                    arrTaskList.add(task);
                 }else {
                     //need to escape character in string for "|" by adding "\\" in front of "|"
                     //if not the split will be on the wrong place
