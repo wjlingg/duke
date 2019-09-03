@@ -1,5 +1,7 @@
 package ui;
 
+import command.ByeCommand;
+
 import java.util.Scanner;
 
 import static common.Messages.*;
@@ -29,7 +31,7 @@ public class Ui {
     }
 
     public void showGoodbye(){
-        System.out.println(DIVIDER + MESSAGE_BYE + DIVIDER);
+        System.out.println(MESSAGE_BYE);
     }
 
     public String readCommand(){

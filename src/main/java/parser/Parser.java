@@ -1,9 +1,6 @@
 package parser;
 
-import command.ByeCommand;
-import command.Command;
-import command.DeadlineCommand;
-import command.EventCommand;
+import command.*;
 import exception.DukeException;
 import storage.Storage;
 import task.Deadline;
@@ -17,9 +14,9 @@ import static common.Messages.COMMAND_DEADLINE;
 import static common.Messages.COMMAND_DELETE;
 import static common.Messages.COMMAND_DONE;
 import static common.Messages.COMMAND_EVENT;
-import static common.Messages.COMMAND_EXIT_PROGRAM;
+import static common.Messages.COMMAND_BYE;
 import static common.Messages.COMMAND_FIND;
-import static common.Messages.COMMAND_GET_LIST;
+import static common.Messages.COMMAND_LIST;
 import static common.Messages.COMMAND_TODO;
 
 import static common.Messages.DIVIDER;
@@ -52,16 +49,9 @@ public class Parser {
     private static final ArrayList<String> arrList = new ArrayList<>();
 
     public static Command parse(String userInputCommand) throws DukeException {
-        if (userInputCommand.trim().equals(COMMAND_GET_LIST)) {
-            System.out.println(DIVIDER + MESSAGE_TASKED);
-            for (int i = 0; i < myList.size(); i++) {
-                final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
-                System.out.println(
-                        "     " + displayIndex + ". " + myList.get(i)
-                );
-            }
-            System.out.println(DIVIDER);
-        } else if (userInputCommand.trim().equals(COMMAND_EXIT_PROGRAM)) {
+        if (userInputCommand.trim().equals(COMMAND_LIST)) {
+            return new ListCommand(userInputCommand);
+        } else if (userInputCommand.trim().equals(COMMAND_BYE)) {
             return new ByeCommand();
         } else if (userInputCommand.contains(COMMAND_DEADLINE)) {
             if (userInputCommand.trim().substring(0, 8).equals(COMMAND_DEADLINE)) {
@@ -78,6 +68,5 @@ public class Parser {
         }else{
             throw new DukeException(ERROR_MESSAGE_RANDOM);
         }
-        throw new DukeException(ERROR_MESSAGE_RANDOM);
     }
 }

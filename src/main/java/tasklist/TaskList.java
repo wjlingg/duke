@@ -36,6 +36,21 @@ public class TaskList {
         taskList.add(task);
     }
 
+    public ArrayList<String> listTask(){
+        ArrayList<String> arrList = new ArrayList<>();
+//        System.out.println(MESSAGE_TASKED);
+        for (int i = 0; i < getSize(); i++){
+            final int displayIndex = i + DISPLAYED_INDEX_OFFSET;
+            arrList.add("     " + displayIndex + ". " + taskList.get(i).toString());
+        }
+//        System.out.println(DIVIDER);
+        return arrList;
+    }
+
+    public int getSize(){
+        return taskList.size();
+    }
+
     public void addDeadlineTask(String description, String by){
         taskList.add(new Deadline(description, by));
         int index = taskList.size();
