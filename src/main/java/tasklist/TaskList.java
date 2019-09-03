@@ -26,15 +26,15 @@ public class TaskList {
     public ArrayList<String> findTask(String description) throws DukeException{
         ArrayList<String> arrFind = new ArrayList<>();
         for (int i = 0; i < getSize(); i++){
-            int index = 0;
             if(taskList.get(i).getDescription().contains(description)) {
-                index++;
-                arrFind.add("     " + index + ". " + taskList.get(i).toString());
-            }else if(i == getSize() - 1){
-                throw new DukeException(ERROR_MESSAGE_NOTFOUND);
+                arrFind.add(taskList.get(i).toString());
             }
         }
-        return arrFind;
+        if(arrFind.isEmpty()){
+            throw new DukeException(ERROR_MESSAGE_NOTFOUND);
+        }else {
+            return arrFind;
+        }
     }
 
     public ArrayList<String> listTask(){

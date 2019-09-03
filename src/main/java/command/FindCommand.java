@@ -21,7 +21,7 @@ public class FindCommand extends Command {
             String description = userInputCommand.trim().split("\\s", 2)[1];
             System.out.println(MESSAGE_FIND);
             for (int i = 0; i < taskList.findTask(description).size(); i++){
-                System.out.println(taskList.findTask(description).get(i));
+                System.out.println("     " + (i + 1) + ". " + taskList.findTask(description).get(i));
             }
         }else{
             throw new DukeException(ERROR_MESSAGE_RANDOM);
