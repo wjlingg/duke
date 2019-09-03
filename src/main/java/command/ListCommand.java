@@ -1,6 +1,5 @@
 package command;
 
-import exception.DukeException;
 import storage.Storage;
 import tasklist.TaskList;
 import ui.Ui;
@@ -8,6 +7,7 @@ import ui.Ui;
 import static common.Messages.*;
 
 public class ListCommand extends Command {
+
     public ListCommand(String userInputCommand) {
         this.userInputCommand = userInputCommand;
     }

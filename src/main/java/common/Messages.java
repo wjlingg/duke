@@ -9,8 +9,8 @@ public class Messages {
     public static final String MESSAGE_ADDED = "     Got it. I've added this task:\n";
     public static final String MESSAGE_BYE = "     Bye. Hope to see you again soon!";
     public static final String MESSAGE_DELETE = "     Noted. I've removed this task:\n";
-    public static final String MESSAGE_FIND = "     Here are the matching tasks in your list:\n";
-    public static final String MESSAGE_FOLLOWUP_EMPTY_INDEX = "       Kindly enter the command again with an index.\n";
+    public static final String MESSAGE_FIND = "     Here are the matching tasks in your list:";
+    public static final String MESSAGE_FOLLOWUP_EMPTY_INDEX = "       Kindly enter the command again with an index.";
     public static final String MESSAGE_FOLLOWUP_INVALID_INDEX = "     Kindly enter command with index not more than ";
     public static final String MESSAGE_FOLLOWUP_NUll = "       Kindly enter the command again with a description.";
     public static final String MESSAGE_ITEMS1 = "     Now you have ";
