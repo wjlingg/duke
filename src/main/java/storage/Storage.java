@@ -40,7 +40,7 @@ public class Storage {
                 if(content.charAt(0) == 'T') {
                     String details = content.substring(8);
                     Task task = new Todo(details);
-                    if (content.charAt(4) == '\u2713') {
+                    if (content.charAt(4) == '+') {
                         task.markAsDone();
                     }
                     arrTaskList.add(task);
@@ -50,13 +50,13 @@ public class Storage {
                     String[] split = content.substring(8).split(" \\| ", 2);
                     if (content.charAt(0) == 'D') {
                         Task task = new Deadline(split[0], split[1]);
-                        if (content.charAt(4) == '\u2713') {
+                        if (content.charAt(4) == '+') {
                             task.markAsDone();
                         }
                         arrTaskList.add(task);
                     } else if (content.charAt(0) == 'E') {
                         Task task = new Event(split[0], split[1]);
-                        if (content.charAt(4) == '\u2713') {
+                        if (content.charAt(4) == '+') {
                             task.markAsDone();
                         }
                         arrTaskList.add(task);
