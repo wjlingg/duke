@@ -51,7 +51,8 @@ public class TaskList {
     }
 
     public void addDeadlineTask(String description, String by){
-        taskList.add(new Deadline(description, by));
+        String date = new Deadline(description, by).convertDate(by);
+        taskList.add(new Deadline(description, date));
         int index = taskList.size();
         if (index == 1) {
             msg = " task in the list.";
