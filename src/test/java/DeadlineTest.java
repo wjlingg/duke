@@ -25,7 +25,7 @@ public class DeadlineTest {
     }
 
     @Test
-    public void shouldTestTodoGetStatusIcon() {
+    public void shouldTestDeadlineGetStatusIcon() {
         Task deadline = new Deadline("borrow book", "2/12/2019 1800");
         deadline.markAsDone();
         // assert statements
