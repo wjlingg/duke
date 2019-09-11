@@ -7,12 +7,19 @@ import ui.Ui;
 
 import static common.Messages.filePath;
 
+/**
+ * Duke processes different commands
+ */
 public class Duke {
 
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Constructor for Duke class to instantiation Ui, Storage, TaskList classes
+     * @param filePath String containing the directory in which the tasks are to be stored
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -24,11 +31,13 @@ public class Duke {
         }
     }
 
+    /**
+     * Method to start the program
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
         while (!isExit) {
-            //same as the previous executeCommand()
             try {
                 String fullCommand = ui.readCommand();
                 ui.showLine();
@@ -43,6 +52,10 @@ public class Duke {
         }
     }
 
+    /**
+     * Starting the program
+     * @param args the command line parameter
+     */
     public static void main(String[] args) {
         new Duke(filePath).run();
     }

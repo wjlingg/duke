@@ -1,24 +1,45 @@
 package task;
 
+/**
+ * Represent a deadline task and inherits all the fields and methods of Task parent class
+ */
 public class Deadline extends Task {
 
     protected String by; // private instance variables
 
+    /**
+     * Constructor for class Deadline
+     * @param description String containing the description of the task
+     * @param by String containing the date and time of the deadline for the task
+     */
     public Deadline(String description, String by) {
         super(description);
         this.by = by;
     }
 
+    /**
+     * Converts user input command to a standardized format to store in file
+     * @return String containing the standardized format
+     */
     @Override
     public String toSaveString(){
         return "D" + super.toSaveString() + " | " + by;
     }
 
+    /**
+     * Converts user input command to a standardized format in taskList
+     * @return String containing the standardized format
+     */
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }
 
+    /**
+     * Convert the user input date and time
+     * @param userInputDate String containing the user input date and time
+     * @return String containing the converted date and time
+     */
     public String convertDate (String userInputDate) {
         String suffix = "";// st, nd, rd, th
         String extra = "";// am, pm

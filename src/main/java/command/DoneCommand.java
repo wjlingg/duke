@@ -7,12 +7,24 @@ import ui.Ui;
 
 import static common.Messages.*;
 
+/**
+ * Handles the done command and inherits all the fields and methods of Command parent class
+ */
 public class DoneCommand extends Command {
 
+    /**
+     * Constructor for class DoneCommand
+     * @param userInputCommand input command from user
+     */
     public DoneCommand(String userInputCommand) {
         this.userInputCommand = userInputCommand;
     }
 
+    /**
+     * Validate that user inputs an integer value for the index
+     * @param input String containing integer input from user for the index
+     * @return true if the user inputs an integer and false otherwise
+     */
     public static boolean isParsable(String input) {
         try {
             Integer.parseInt(input);
@@ -22,6 +34,14 @@ public class DoneCommand extends Command {
         }
     }
 
+    /**
+     * Processes the done command to mark task as done in the task list
+     * @param taskList contains the task list
+     * @param ui deals with interactions with the user
+     * @param storage deals with loading tasks from the file and saving tasks in the file
+     * @throws DukeException if Duke cannot recognize the user input
+     *                      or user inputs an invalid index or the list of tasks is empty
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
         if (userInputCommand.trim().equals(COMMAND_DONE)) {

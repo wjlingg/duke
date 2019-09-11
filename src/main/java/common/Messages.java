@@ -1,5 +1,8 @@
 package common;
 
+/**
+ * A class to store all the initialisation of the static error messages to String value
+ */
 public class Messages {
 
     public static final int DISPLAYED_INDEX_OFFSET = 1;

@@ -5,6 +5,9 @@ import storage.Storage;
 import tasklist.TaskList;
 import ui.Ui;
 
+/**
+ * Abstract class to represent command
+ */
 public abstract class Command {
     protected String userInputCommand;
 

@@ -5,8 +5,17 @@ import exception.DukeException;
 
 import static common.Messages.*;
 
+/**
+ * Making sense of the user input command
+ */
 public class Parser {
 
+    /**
+     * Processes the different user input command
+     * @param userInputCommand String containing input command from user
+     * @return the different command object corresponding to the user input
+     * @throws DukeException if Duke cannot recognise the user input
+     */
     public static Command parse(String userInputCommand) throws DukeException {
         if (userInputCommand.trim().equals(COMMAND_LIST)) {
             return new ListCommand(userInputCommand);

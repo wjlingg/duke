@@ -10,14 +10,25 @@ import tasklist.TaskList;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Handles the ability to read and write to the storage location
+ */
 public class Storage {
     private static final ArrayList<Task> arrTaskList = new ArrayList<>();
     private final String filePath;
 
+    /**
+     * Constructor for the class Storage
+     * @param filePath String containing the directory in which the tasks are to be stored
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Writing to file to save the task to file
+     * @param taskList contains the task list
+     */
     public void saveFile(TaskList taskList){
         try{
             FileWriter fileWriter = new FileWriter(filePath);
@@ -31,6 +42,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Load all the save tasks in the file
+     * @return the list of tasks in taskList
+     * @throws DukeException if Duke is not able to load the tasks from the file or unable to open the file
+     */
     public ArrayList<Task> load() throws DukeException {
         try {
             FileReader fileReader = new FileReader(filePath);
