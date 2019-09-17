@@ -2,7 +2,10 @@ package ui;
 
 import java.util.Scanner;
 
-import static common.Messages.*;
+import static common.Messages.filePath;
+import static common.Messages.MESSAGE_BYE;
+import static common.Messages.ERROR_MESSAGE_LOADING;
+import static common.Messages.DIVIDER;
 
 public class Ui {
 
@@ -13,42 +16,37 @@ public class Ui {
     }
 
     /**
-     * Display welcome message of the program
+     * Display welcome message of the program.
      */
     public void showWelcome() {
         String logo =
-            "      ___         _        \n"
-            + "     |  _ \\ _   _| | _____ \n"
-            + "     | | | | | | | |/ / _ \\\n"
-            + "     | |_| | |_| |   <  __/\n"
-            + "     |____/ \\__,_|_|\\_\\___|\n"
-            + "\n";
+                "      ___         _        \n"
+                        + "     |  _ \\ _   _| | _____ \n"
+                        + "     | | | | | | | |/ / _ \\\n"
+                        + "     | |_| | |_| |   <  __/\n"
+                        + "     |____/ \\__,_|_|\\_\\___|\n"
+                        + "\n";
 
-        System.out.println(
-                DIVIDER + logo +
-                        "     Hello! I'm Duke\n" +
-                        "     What can I do for you?\n" +
-                        DIVIDER
-        );
+        System.out.println(DIVIDER + logo + "     Hello! I'm Duke\n" + "     What can I do for you?\n" + DIVIDER);
     }
 
-    public void showGoodbye(){
+    public void showGoodbye() {
         System.out.println(MESSAGE_BYE);
     }
 
-    public String readCommand(){
+    public String readCommand() {
         return scanner.nextLine();
     }
 
-    public void showLine(){
+    public void showLine() {
         System.out.print(DIVIDER);
     }
 
-    public void showLoadingError(){
+    public void showLoadingError() {
         System.out.println(ERROR_MESSAGE_LOADING + filePath);
     }
 
-    public void showError(String errorMessage){
+    public void showError(String errorMessage) {
         System.out.println(errorMessage);
     }
 }

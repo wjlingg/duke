@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Collections;
 
-import javafx.collections   .FXCollections;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +51,12 @@ public class DialogBox extends HBox {
         return new DialogBox(text, img);
     }
 
+    /**
+     * Creates dialog box for Duke.
+     * @param text Duke response
+     * @param img Duke image
+     * @return dialog box
+     */
     public static DialogBox getDukeDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();

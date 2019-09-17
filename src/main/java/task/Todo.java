@@ -1,12 +1,12 @@
 package task;
 
 /**
- * Represent a todo task and inherits all the fields and methods of Task parent class
+ * Represent a todo task and inherits all the fields and methods of Task parent class.
  */
 public class Todo extends Task {
 
     /**
-     * Constructor for class Event
+     * Constructor for class Todo.
      * @param description String containing the description of the task
      */
     public Todo(String description) {
@@ -14,16 +14,16 @@ public class Todo extends Task {
     }
 
     /**
-     * Converts user input command to a standardized format to store in file
+     * Converts user input command to a standardized format to store in file.
      * @return String containing the standardized format
      */
     @Override
-    public String toSaveString(){
+    public String toSaveString() {
         return "T" + super.toSaveString();
     }
 
     /**
-     * Converts user input command to a standardized format in taskList
+     * Converts user input command to a standardized format in taskList.
      * @return String containing the standardized format
      */
     @Override
